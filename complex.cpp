@@ -9,8 +9,12 @@ private:
 
 public:
     // Constructor
-    Complex(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}
-
+    Complex(double r, double i)
+    {
+        this->real = r;
+        this->imaginary = i;
+    }
+    Complex(){};
     void input()
     {
         cout << "Enter real part: ";
@@ -18,11 +22,11 @@ public:
         cout << "Enter imaginary part: ";
         cin >> imaginary;
     }
-    Complex add(const Complex &other) const
+    Complex add(const Complex &other)
     {
         return Complex(real + other.real, imaginary + other.imaginary);
     }
-    void display() const
+    void display()
     {
         cout << real << " + " << imaginary << "i" << endl;
     }
