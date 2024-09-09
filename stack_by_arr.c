@@ -20,6 +20,15 @@ void push(stack *s1, int data)
         s1->arr[s1->top] = data;
     }
 }
+int top(stack *s1)
+{
+    if (s1->top == -1)
+    {
+        printf("stack is empty\n");
+        return -1;
+    }
+    return s1->arr[s1->top];
+}
 int pop(stack *s1)
 {
     if (s1->top == -1)
@@ -49,8 +58,7 @@ int main()
     push(s1, 8);
     push(s1, 9);
     push(s1, 10);
-    push(s1, 10);
-    
+
     printf("%d\n", pop(s1));
     printf("%d\n", pop(s1));
     printf("%d\n", pop(s1));
@@ -61,6 +69,8 @@ int main()
     printf("%d\n", pop(s1));
     printf("%d\n", pop(s1));
     printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
+
+    int topvalue = top(s1);
+    printf("%d", topvalue);
     free(s1);
 }
