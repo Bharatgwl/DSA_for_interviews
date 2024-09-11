@@ -26,11 +26,11 @@ int binary_search(int arr[], int size, int key)
 }
 int main()
 {
-    int array[6]= {1,2,3,4,5,6};
+    int array[6] = {1, 2, 3, 4, 5, 6};
     int key;
-    cin >> key ;
-    int index = binarysearch(array,6,key);
-    cout<<"index of key is" << index << endl;
+    cin >> key;
+    int index = binary_search(array, 6, key);
+    cout << "index of key is" << index << endl;
 
     return 0;
 }

@@ -58,19 +58,15 @@ int main()
     push(s1, 8);
     push(s1, 9);
     push(s1, 10);
-
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-    printf("%d\n", pop(s1));
-
-    int topvalue = top(s1);
-    printf("%d", topvalue);
-    free(s1);
+    pop(s1);
+    pop(s1);
+    pop(s1);
+    pop(s1);
+    pop(s1);
+    pop(s1);
+    pop(s1);
+    pop(s1);
+    pop(s1);
+   
+    printf("%d", top(s1));
 }
