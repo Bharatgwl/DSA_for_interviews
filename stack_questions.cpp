@@ -79,7 +79,7 @@ int main()
         if (ans[i] == -1)
 
         {
-            
+
             cout << "se";
         }
         else
