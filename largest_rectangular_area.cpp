@@ -67,7 +67,7 @@ int largestarea(vector<int> &height)
 
 int main()
 {
-    vector<int> height = {2, 1, 5, 6, 2, 3};
+    vector<int> height = {1,8,6,2,5,4,8,3,7 };
     int ans = largestarea(height);
     cout << ans;
 }
