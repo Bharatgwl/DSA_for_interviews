@@ -54,6 +54,7 @@ int main()
     while(a=='y') {
         double x;
         double y;
+        
 
 
         char option;

@@ -49,7 +49,7 @@ int largestarea(vector<int> &height)
     next = next_smaller(height, n);
     vector<int> prev(n);
     next = prev_smaller(height, n);
-    int area = INT_MIN;
+    int area =INT_MIN;
     for (int i = 0; i < n; i++)
     {
         int l = height[i];
@@ -67,7 +67,7 @@ int largestarea(vector<int> &height)
 
 int main()
 {
-    vector<int> height = {1,8,6,2,5,4,8,3,7 };
+    vector<int> height = {1,8,6,2,5,4,8,3,7};
     int ans = largestarea(height);
     cout << ans;
 }

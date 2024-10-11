@@ -2,9 +2,10 @@
 #include <limits.h>
 #include <stack>
 #include <vector>
+#include<algorithm>
 
 using namespace std;
-vector<int> next_smaller(int *arr, int n)
+vector<int> next_smaller(int *arr,int n)
 {
 
     vector<int> ans(n);
