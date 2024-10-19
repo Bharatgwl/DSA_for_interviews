@@ -47,7 +47,7 @@ int height(node *root)
     int ans = (max(lefth, righth) + 1);
     return ans;
 }
-pair<int, int> diameter(node *&root)
+pair<int, int> diameter(node  *&root)
 {
     if (root == NULL)
     {

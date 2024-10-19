@@ -30,6 +30,6 @@ int main() {
 
     for(int i = 1; i <= n; i++) {
         if(vis[i]) 
-            cout << i << " ";
+            cout << i << "  ";
     }
 }
