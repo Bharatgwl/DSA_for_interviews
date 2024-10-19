@@ -159,7 +159,13 @@ int main()
     d1.pushfront(2);
     d1.pushfront(3);
     d1.pushfront(4);
-    d1.pushrear(5);
+
+    cout << d1.popfront() << " ";
+    cout << d1.popfront() << " ";
+    cout << d1.popfront() << " ";
+    cout << d1.popfront() << " ";
+    cout << d1.popfront() << " ";
+
     cout << d1.isempty() << endl;
     cout << d1.isfull() << endl;
     cout << d1.getfront() << endl;
