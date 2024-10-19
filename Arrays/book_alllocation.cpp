@@ -51,9 +51,9 @@ int allocatebooks(vector<int> arr, int size, int m)
 }
 int main()
 {
-    vector<int> arr = {10, 20, 30, 40};
+    vector<int> arr = {10, 20, 30, 40,60};
     int n = arr.size();
-    int m = 2;
+    int m = 3;
     int answers = allocatebooks(arr, n, m);
     cout << answers << endl;
     return 0;
