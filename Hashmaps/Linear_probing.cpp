@@ -4,6 +4,7 @@ using namespace std;
 
 int main()
 {
+    int collision=0;
     int k;
     cin >> k;
     vector<int> arr(k);
@@ -28,4 +29,7 @@ int main()
     {
         cout << i << " ";
     }
+    cout << endl;
+    cout << "collisions: " << collision << endl;
+    
 }
