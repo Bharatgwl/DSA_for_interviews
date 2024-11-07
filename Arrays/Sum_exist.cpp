@@ -23,7 +23,7 @@ int main()
             auto it = find(a.begin(), a.end(), sum);
             if (it != a.end())
             {
-                cout << a[i]<<a[j]<<endl;
+                cout << a[i]<<" "<<a[j]<<endl;
             }
         }
     }
