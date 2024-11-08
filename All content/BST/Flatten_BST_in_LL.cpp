@@ -52,6 +52,11 @@ void Inorder(node *root, vector<node *> &ans)
     ans.push_back(root);
     Inorder(root->right, ans);
 }
+/**
+ * This function takes a vector of inorder nodes of a BST and flattens the BST into a linked list.
+ * The function takes the root of the tree as the first element of the vector and then connects all the nodes in the vector as a LL.
+ * The left pointer of each node is set to NULL and the right pointer is set to the next element of the vector.
+ * The last node of the vector is set to NULL.*/
 node *flatten_BST(vector<node *> &vec)
 {
     node *root = vec[0];

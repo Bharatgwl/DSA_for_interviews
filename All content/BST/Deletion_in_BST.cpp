@@ -91,6 +91,18 @@ void Inorder(node *root)
     cout << root->data << " ";
     Inorder(root->right);
 }
+/**
+ * @brief Deletes a node from a Binary Search Tree (BST)
+ * 
+ * If the node to be deleted has no children, then it is simply removed.
+ * If the node has one child, then that child is attached to the node's parent.
+ * If the node has two children, then the minimum value of the right subtree is
+ * copied to the node and then the node is deleted.
+ * 
+ * @param root The root of the BST
+ * @param x The value of the node to be deleted
+ * @return The root of the modified BST
+ */
 node *Delete(node *root, int x)
 {
     if (root == NULL)

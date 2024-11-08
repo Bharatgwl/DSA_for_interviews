@@ -1,6 +1,13 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+/**
+ * @brief      Finds all the missing numbers in the range [1,13] given a set of
+ *             numbers in the same range.
+ *
+ * @details    The set of numbers is given as a vector of integers. The output
+ *             is a list of all the missing numbers in the same range.
+ */
 int main()
 {
     vector<int> arr = {3, 7, 2, 9, 11, 13, 6, 1};

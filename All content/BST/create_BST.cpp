@@ -15,6 +15,15 @@ public:
     }
 };
 
+/**
+ * This function performs a level order traversal of the binary search tree.
+ * It prints each level of the tree on a new line, with the elements of the
+ * level separated by spaces.
+ * The time complexity of this function is O(n) where n is the number of
+ * nodes in the tree, since it visits each node once. The space complexity
+ * is O(m) where m is the maximum depth of the tree, since it stores the
+ * nodes to be visited in a queue.
+ */
 void Level_order_traversal(node *root)
 {
     queue<node *> q;

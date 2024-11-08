@@ -3,6 +3,18 @@
 #include <limits.h>
 
 using namespace std;
+/**
+ * @brief      This function implements the Kadane's algorithm to find the
+ *             maximum contiguous subarray sum of a given array.
+ *
+ * @param[in]  arr   The input array
+ *
+ * @details    This function iterates the array and at each step, it adds the
+ *             current element to a running sum. If the sum becomes negative,
+ *             the sum is reset to zero and the start index is incremented.
+ *             The maximum sum, start index and end index are kept track of.
+ *             At the end, it prints the subarray with maximum sum.
+ */
 void kadanes_algo(vector<int> arr)
 {
     int sum = 0;

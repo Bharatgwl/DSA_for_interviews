@@ -41,6 +41,20 @@ void takeinput(node *&root)
         cin >> data;
     }
 }
+/**
+ * @brief Finds the lowest common ancestor (LCA) of two nodes in a binary search
+ *        tree (BST). The LCA of two nodes is the node furthest from the root
+ *        which is the ancestor of both nodes.
+ *
+ * @param root the root of the BST
+ * @param a the first node
+ * @param b the second node
+ *
+ * @returns the LCA of a and b, or NULL if either a or b are not in the tree
+ * This function finds the lowest common ancestor (LCA) of two nodes (a and b) in a binary search tree (BST). 
+ * It recursively traverses the tree, moving right if both nodes are greater than the current node, 
+ * left if both nodes are smaller, and returns the current node if it's the LCA. If the tree is empty, it returns NULL.
+ */
 node *LCA(node *root, int a, int b)
 {
     if (root == NULL)

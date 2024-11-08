@@ -52,13 +52,30 @@ void takeinput(node *&root)
         cin >> data;
     }
 }
+/**
+ * Finds the minimum value in a binary search tree.
+ *
+ * This function takes a pointer to the root node of a binary search tree and
+ * returns the minimum value in the tree. The minimum value is the value of the
+ * leftmost node in the tree, which is the node with the smallest key.
+ *
+ * @param root the root of the binary search tree
+ * @return the minimum value in the tree
+ */
 int min_value(node *root)
 {
+    // Start at the root of the tree
     node *curr = root;
+
+    // While there is a left child, move to the left child
     while (curr->left)
     {
+        // Move to the left child
         curr = curr->left;
     }
+
+    // When there is no left child, the current node is the minimum
+    // Return the value of the minimum node
     return curr->data;
 }
 int max_value(node *root)

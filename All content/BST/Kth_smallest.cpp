@@ -41,6 +41,15 @@ void takeinput(node *&root)
         cin >> data;
     }
 }
+/**
+ * @brief This function takes a binary search tree (BST) and a number k as input and returns the kth smallest element in the BST.
+ *
+ * @param root the root node of the BST
+ * @param i a reference to an integer to keep track of the current position in the inorder traversal
+ * @param k the kth smallest element to be found
+ *
+ * @return the kth smallest element in the BST or -1 if the BST is empty
+ */
 int kth_smallest(node *root, int &i, int k)
 {
     if (root == NULL)

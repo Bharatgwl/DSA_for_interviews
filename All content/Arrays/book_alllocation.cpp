@@ -1,6 +1,19 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+/**
+ * Determines if it is possible to allocate books such that no student reads more than 'mid' pages.
+ * 
+ * This function takes an array where each element represents the number of pages in a book, the total
+ * number of books, the number of students, and the maximum allowable number of pages a student can read.
+ * It checks if it is feasible to assign books to students such that no student is assigned more than 'mid' pages.
+ * 
+ * @param arr A vector of integers where each integer represents the number of pages in a book.
+ * @param size The total number of books.
+ * @param m The total number of students.
+ * @param mid The maximum number of pages a student can read.
+ * @return Returns true if the books can be allocated such that no student reads more than 'mid' pages, otherwise false.
+ */
 bool ispossible(vector<int> arr, int size, int m, int mid)
 {
     int stdcount = 1;
@@ -23,6 +36,18 @@ bool ispossible(vector<int> arr, int size, int m, int mid)
     }
     return true;
 }
+/**
+ * Allocates books to students such that the maximum number of pages assigned to a student is minimized.
+ *
+ * This function uses a binary search approach to find the optimal solution to allocate books among students.
+ * It takes an array where each element represents the number of pages in a book. The function calculates
+ * the minimum number of pages that can be allocated to a student such that no student has more pages than this minimum.
+ * 
+ * @param arr A vector of integers where each integer represents the number of pages in a book.
+ * @param size The total number of books.
+ * @param m The total number of students.
+ * @return The minimum number of pages that can be allocated to a student such that no student reads more than this number.
+ */
 int allocatebooks(vector<int> arr, int size, int m)
 {
     int s = 0;
@@ -49,10 +74,17 @@ int allocatebooks(vector<int> arr, int size, int m)
     }
     return ans;
 }
+/**
+ * The main function initializes a vector of integers representing the number of pages in different books.
+ * It calculates the size of the vector and assigns the number of students.
+ * Then, it calls the allocatebooks function to determine the minimum number of pages that can be allocated 
+ * to each student such that no student has more pages than this minimum.
+ * Finally, it prints the result.
+ */
 int main()
 {
     vector<int> arr = {10, 20, 30, 40,60};
-    int n = arr.size();
+    int n = arr.size(); 
     int m = 3;
     int answers = allocatebooks(arr, n, m);
     cout << answers << endl;

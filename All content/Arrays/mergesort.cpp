@@ -1,5 +1,20 @@
 #include <iostream>
 using namespace std;
+/**
+ * @brief Merge two sorted arrays into one
+ * 
+ * @param arr The original array
+ * @param s The start index of the array
+ * @param e The end index of the array
+ * 
+ * @details
+ *      This function uses the merge sort algorithm to sort the given array
+ *      in increasing order. It divides the array into two halves, sorts them
+ *      and then merges them together in sorted order.
+ * 
+ *      The time complexity of this function is O(n log n) and the space complexity
+ *      is O(n).
+ */
 void merge(int *arr, int s, int e)
 {
     int mid = (s + e) / 2;
@@ -42,6 +57,18 @@ void merge(int *arr, int s, int e)
     delete[] first;
     delete[] second;
 }
+/**
+ * @brief Sorts the given array in increasing order using the Merge Sort algorithm
+ * 
+ * @param arr The array to be sorted
+ * @param s The start index of the array
+ * @param e The end index of the array
+ * 
+ * @details
+ *      Merge Sort is a divide and conquer algorithm. It divides the array into two halves, sorts them
+ *      and then merges them together in sorted order. The time complexity of this function is O(n log n)
+ *      and the space complexity is O(n).
+ */
 void mergesort(int *arr, int s, int e)
 {
     if (s >= e)
@@ -55,6 +82,14 @@ void mergesort(int *arr, int s, int e)
     merge(arr, s, e);
 }
 
+/**
+ * @brief Driver program to test the Merge Sort algorithm
+ * 
+ * @details
+ *      The user is prompted to enter 50 numbers, which are then sorted using the Merge Sort algorithm and printed out in sorted order.
+ *      The time complexity of the Merge Sort algorithm is O(n log n) and the space complexity is O(n). The Merge Sort algorithm is a divide and
+ *      conquer algorithm. It divides the array into two halves, sorts them and then merges them together in sorted order.
+ */
 int main()
 {
     int arr[50];

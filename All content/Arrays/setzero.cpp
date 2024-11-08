@@ -1,6 +1,15 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+/**
+ * Sets all elements in the k-th row and l-th column of the 2D vector 'arr' to zero.
+ *
+ * @param arr A reference to a 2D vector of integers.
+ * @param k The index of the row to be set to zero.
+ * @param l The index of the column to be set to zero.
+ * @param row The total number of rows in the 2D vector.
+ * @param col The total number of columns in the 2D vector.
+ */
 void make(vector<vector<int>> &arr, int k, int l, int row, int col)
 {
     int j = l;
@@ -14,6 +23,14 @@ void make(vector<vector<int>> &arr, int k, int l, int row, int col)
         arr[m][l] = 0;
     }
 }
+/**
+ * Applies the `make` function to the 2D vector `arr` if `count` is non-zero.
+ *
+ * @param count A flag that determines whether to set the specified row and column to zero.
+ * @param arr A reference to a 2D vector of integers.
+ * @param newindexi The index of the row to be set to zero.
+ * @param newindexj The index of the column to be set to zero.
+ */
 void use(int count, vector<vector<int>> &arr, int newindexi, int newindexj)
 {
     if (count)
