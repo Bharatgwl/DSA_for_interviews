@@ -29,14 +29,29 @@ node *buildtree(node *&root)
     root->right = buildtree(root->right);
     return root;
 }
+/**
+ * Prints out the elements of the binary tree in an inorder traversal
+ * 
+ * An inorder traversal visits the left subtree, then the root, then the
+ * right subtree.
+ * 
+ * @param root the root of the tree to traverse
+ */
 void Inorder(node *root)
 {
+    // if the root is NULL, then there's nothing to do
     if (root == NULL)
     {
         return;
     }
+
+    // traverse the left subtree
     Inorder(root->left);
+
+    // print out the value of the root
     cout << root->data << " ";
+
+    // traverse the right subtree
     Inorder(root->right);
 }
 int main()

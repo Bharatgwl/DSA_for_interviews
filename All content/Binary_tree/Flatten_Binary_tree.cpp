@@ -32,23 +32,38 @@ node *buildtree(node *&root)
 }
 node *Flatten_tree(node *root)
 {
+    // Start with the root node
     node *curr = root;
+    
+    // Traverse the tree using the right pointers
     while (curr != NULL)
     {
+        // If the current node has a left child
         if (curr->left != NULL)
         {
+            // Find the rightmost node of the left subtree (inorder predecessor)
             node *pred = curr->left;
             while (pred->right && pred->right != curr)
             {
                 pred = pred->right;
             }
+            
+            // Link the rightmost node of the left subtree to the current node's right child
             pred->right = curr->right;
+            
+            // Move the left subtree to the right, effectively flattening the tree
             node *temp = curr->left;
             curr->right = temp;
+            
+            // Set the left child of the current node to NULL
             curr->left = NULL;
         }
+        
+        // Move to the next node in the list (originally the right child)
         curr = curr->right;
     }
+    
+    // Return the root of the modified tree
     return root;
 }
 int main()

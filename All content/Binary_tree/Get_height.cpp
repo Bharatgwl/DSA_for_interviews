@@ -32,15 +32,26 @@ node *buildtree(node *&root)
 }
 int getheight(node *root)
 {
+    // Base case: if the tree is empty, return 0
     if (root == NULL)
     {
         return 0;
     }
+
+    // Recursively calculate the height of the left subtree
     int leftheight = getheight(root->left);
+
+    // Recursively calculate the height of the right subtree
     int rightheight = getheight(root->right);
+
+    // The height of the tree is the maximum of the heights of the two
+    // subtrees, plus one (for the root node)
     int ans = (max(leftheight, rightheight) + 1);
+
+    // Return the calculated height
     return ans;
 }
+
 int main()
 {
     node *root;

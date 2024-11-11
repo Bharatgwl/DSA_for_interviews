@@ -32,15 +32,23 @@ node *buildtree(node *&root)
 }
 void Right_view(node *root, vector<int> &ans, int level)
 {
+    // Base case: If the current node is NULL, return immediately as there's nothing to process
     if (root == NULL)
     {
         return;
     }
+
+    // If this is the first node of its level, add it to the answer
+    // The size of the 'ans' vector represents the number of levels processed so far
     if (level == ans.size())
     {
         ans.push_back(root->data);
     }
+
+    // Recursively call the right subtree first to ensure rightmost nodes are processed first
     Right_view(root->right, ans, level + 1);
+
+    // Recursively call the left subtree to continue processing other nodes at the current level
     Right_view(root->left, ans, level + 1);
 }
 int main()
