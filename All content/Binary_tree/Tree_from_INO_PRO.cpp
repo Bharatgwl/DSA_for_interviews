@@ -30,18 +30,32 @@ int find_position(int INO[], int element, int n)
 }
 node *BUILD_tree(int INO[], int PRO[], int &Preorderindex, int startindex, int endindex, int n)
 {
+    // Base case: if the current index in preorder exceeds the size of the array
+    // or if the start index is greater than the end index, return NULL.
     if (Preorderindex >= n || startindex > endindex)
     {
         return NULL;
     }
 
+    // Get the current element from the preorder array using Preorderindex
+    // and increment Preorderindex for the next recursive call.
     int element = PRO[Preorderindex++];
+
+    // Create a new node with the current element.
     node *root = new node(element);
+
+    // Find the position of the current element in the inorder array.
     int position = find_position(INO, element, n);
 
+    // Recursively build the left subtree with the elements before the current
+    // element in the inorder array.
     root->left = BUILD_tree(INO, PRO, Preorderindex, startindex, position - 1, n);
+
+    // Recursively build the right subtree with the elements after the current
+    // element in the inorder array.
     root->right = BUILD_tree(INO, PRO, Preorderindex, position + 1, endindex, n);
 
+    // Return the root of the constructed subtree.
     return root;
 }
 

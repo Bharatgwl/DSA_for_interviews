@@ -18,7 +18,7 @@ private:
         }
     }
 
-    // Helper function to maintain the heap property from the root to a child
+    // Helper function 0to maintain the heap property from the root to a child
     void heapifyDown(int index)
     {
         int leftChild = 2 * index + 1;
@@ -47,19 +47,26 @@ public:
     }
 
     // Function to remove and return the minimum element (root) from the heap
-    int extractMin()
+    void heapsort(vector<int> &ans)
     {
         if (heap.empty())
         {
             cout << "Heap is empty!" << endl;
-            return -1;
+            return;
         }
         int minValue = heap[0];
+        ans.push_back(minValue);
         heap[0] = heap.back();
         heap.pop_back();
-        heapifyDown(0);
-        return minValue;
+        int n = heap.size();
+        for (int i = n / 2 - 1; i >= 0; i--)
+        {
+            heapifyDown(i);
+        }
+        return;
     }
+
+    // Time complexity: O(n log n)
 
     // Function to get the minimum element (root) without removing it
     int getMin() const
@@ -73,7 +80,7 @@ public:
     }
 
     // Function to print the elements of the heap
-    void printHeap() const
+    void printHeap() 
     {
         for (int val : heap)
         {
@@ -88,20 +95,62 @@ int main()
     MinHeap heap;
 
     heap.insert(10);
-    heap.insert(20);
+    heap.insert(22);
     heap.insert(5);
     heap.insert(30);
-    heap.insert(40);
+    heap.insert(4);
 
     cout << "Min-Heap elements: ";
     heap.printHeap();
 
     cout << "Min value: " << heap.getMin() << endl;
+    vector<int> ans;
+    for (int i = 0; i < 5; i++)
+    {
+        heap.heapsort(ans);
+    }
 
-    cout << "Extract min: " << heap.extractMin() << endl;
-
-    cout << "Heap after extraction: ";
-    heap.printHeap();
+    for (int i : ans)
+    {
+        cout << i << ' ';
+    }
+    // cout << "Heap after extraction: ";
+    // heap.printHeap();
 
     return 0;
 }
+//  void heapSort(vector<int> &arr)
+//     {
+//         heap = arr; 
+
+//         int n = heap.size();
+//         for (int i = n / 2 - 1; i >= 0; i--)
+//         {
+//             heapifyDown(i, n);
+//         }
+
+//         for (int i = n - 1; i > 0; i--)
+//         {
+//             swap(heap[0], heap[i]); 
+//             heapifyDown(0, i);     
+//         }
+
+//         arr = heap; 
+//     }
+
+
+// void heapSort(int arr[], int n) {
+//     // Step 1: Build max-heap
+//     for (int i = n / 2 - 1; i >= 0; i--) {
+//         heapifyDown(arr, n, i);
+//     }
+
+//     // Step 2: Extract elements from heap one by one
+//     for (int i = n - 1; i > 0; i--) {
+//         // Swap root with the last element
+//         swap(&arr[0], &arr[i]);
+
+//         // Restore heap property for the reduced heap
+//         heapifyDown(arr, i, 0);
+//     }
+// }
