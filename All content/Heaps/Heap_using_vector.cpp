@@ -96,6 +96,6 @@ int main()
     h1.remove(); // remove root which is 70
     h1.print();
     h1.remove(); // remove root which is 55
-    h1.print(); // remove root which is 55
+    h1.print(); 
     // h1.inserlt(2);
 }

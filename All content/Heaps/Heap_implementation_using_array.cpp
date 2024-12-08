@@ -10,6 +10,7 @@ private:
 public:
     Heap(int size)
     {
+        cout<<"constructor is called"<<endl;
         this->size = size;
         arr = new int(size);
     }
@@ -84,6 +85,10 @@ public:
             swap(arr[rootIndex], arr[largest]);
             rootIndex = largest; // Move to the largest child
         }
+    }
+    ~Heap(){
+        cout<<"desturctor is called"<<endl;
+        delete[] arr;
     }
 };
 int main()
