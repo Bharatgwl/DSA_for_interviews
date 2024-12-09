@@ -103,7 +103,7 @@ node *merge_LL(node *h1, node *h2)
                 // Set the head of the merged list to the current node in list 1
                 head = h1;
                 // Set the tail of the merged list to the current node in list 1
-                tail = h2;
+                tail = h1; // chota sa error h2
             }
             else
             {
@@ -193,11 +193,27 @@ int countnodes(node *head)
  * The n parameter is the number of nodes in the linked list.
  * The function returns the root of the balanced binary search tree.
  */
+void log(int n, string callType)
+{
+    static int depth = 0;
+    if (callType == "enter")
+    {
+        cout << string(depth, '-') << "Entering: n = " << n << endl;
+        depth++;
+    }
+    else if (callType == "exit")
+    {
+        depth--;
+        cout << string(depth, '-') << "Exiting: n = " << n << endl;
+    }
+}
 node *convert_LL_to_BST(node *&head, int n)
 {
     // If the number of nodes in the linked list is 0 or less, or if the head of the linked list is NULL, return NULL
+    log(n, "enter");
     if (n <= 0 || head == NULL)
     {
+        log(n, "exit");
         return NULL;
     }
     // Recursively call the function on the left part of the linked list
@@ -213,6 +229,7 @@ node *convert_LL_to_BST(node *&head, int n)
     // Return the root of the balanced binary search tree
     return root;
 }
+
 void Level_order_traversal(node *root)
 {
     queue<node *> q;
@@ -254,7 +271,7 @@ void inorder(node *&root)
     cout << root->data << " ";
     inorder(root->right);
 }
-//merge_2_bst question link : (https://www.geeksforgeeks.org/merge-two-bsts-with-limited-extra-space/)
+// merge_2_bst question link : (https://www.geeksforgeeks.org/merge-two-bsts-with-limited-extra-space/)
 int main()
 {
     node *root1 = NULL;
@@ -274,3 +291,6 @@ int main()
     inorder(root3);
     return 0;
 }
+
+// 5 3 7 2 4 6 8 -1
+// 10 6 14 4 8 12 16 -1
