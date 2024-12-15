@@ -96,7 +96,7 @@ int main()
         head2 = tail2;
     }
     insertattail(tail2, 6);
-    head2->next->next = head1->next->next->next->next;
+    head2->next->next = head1->next->next->next->next;//creating a [5,6] intersection
     int len1 = getlength(head1);
     int len2 = getlength(head2);
     int difference = len1 - len2;
