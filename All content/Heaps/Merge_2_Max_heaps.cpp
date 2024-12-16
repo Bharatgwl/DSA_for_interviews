@@ -2,6 +2,8 @@
 #include <vector>
 using namespace std;
 
+// https://practice.geeksforgeeks.org/problems/merge-two-max-heaps/1
+// Time complexity: O(nlogn) where n is the total number of elements in both heaps
 void heapify(vector<int> &arr, int n, int i)
 {
     int largest = i;
