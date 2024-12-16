@@ -1,7 +1,6 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
-
-#include <iostream>
+#include<iostream>
 using namespace std;
 
 template <typename T>
@@ -22,18 +21,62 @@ private:
     Node *Sort(Node *node);
     Node *merge(Node *left, Node *right);
 
+    // Helper function for deep copy
+    void copyList(const LinkedList &other);
+
 public:
     LinkedList() : head(nullptr) {}
+
+    // Deep Copy Constructor
+    LinkedList(const LinkedList &other)
+    {
+        head = nullptr;
+        copyList(other);
+    }
+
+    // Destructor
     ~LinkedList();
 
+    // Insert function
     void insert(T data);
+
+    // Display function
     void display() const;
+
+    // Remove function
     void remove(T data);
+
+    // Reverse function
     void reverse();
+
+    // Rotate function
     Node *rotateLL(int k);
 
+    // Sort function
     void Sort();
 };
+
+// Deep copy helper function
+template <typename T>
+void LinkedList<T>::copyList(const LinkedList &other)
+{
+    if (other.head == nullptr)
+    {
+        head = nullptr;
+        return;
+    }
+
+    head = new Node(other.head->data);
+    Node *tempOther = other.head->next;
+    Node *tempThis = head;
+
+    while (tempOther != nullptr)
+    {
+        tempThis->next = new Node(tempOther->data);
+        tempThis = tempThis->next;
+        tempOther = tempOther->next;
+    }
+}
 
 template <typename T>
 LinkedList<T>::~LinkedList()
@@ -163,7 +206,6 @@ void LinkedList<T>::Sort()
 template <typename T>
 typename LinkedList<T>::Node *LinkedList<T>::Sort(Node *node)
 {
-
     if (node == nullptr || node->next == nullptr)
         return node;
 
