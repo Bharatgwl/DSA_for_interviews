@@ -44,45 +44,43 @@ int Smallest_range_in_KsortredList(vector<vector<int>> &arr, int k)
 {
     // Initialize the minimum and maximum values to INT_MAX and INT_MIN, respectively
     int mini = INT_MAX, maxi = INT_MIN;
-    
+
     // Initialize the size of the 2D vector
     int n = arr.size();
-    
+
     // Create a priority queue and push the first element of each sorted list into it
     priority_queue<node *, vector<node *>, compare> pq;
     for (int i = 0; i < k; i++)
     {
         node *temp = new node(arr[i][0], i, 0);
         pq.push(temp);
-        
+
         // Update the minimum and maximum values
         mini = min(mini, arr[i][0]);
         maxi = max(maxi, arr[i][0]);
     }
-    
+
     // Initialize the start and end of the range to the minimum and maximum values, respectively
     int start = mini, end = maxi;
-    
+
     // Calculate the range
-    int range = (maxi - mini) + 1;
-    
+
     // Iterate through the sorted list and update the minimum and maximum values
     while (!pq.empty())
     {
         node *temp = pq.top();
         pq.pop();
-        
+
         // Update the minimum value
         mini = temp->data;
-        
+
         // If the current range is smaller than the previous range, update the start and end of the range
         if (maxi - mini < end - start)
         {
             start = mini;
             end = maxi;
-            range = (maxi - mini) + 1;
         }
-        
+
         // If the current element is not the last element in its sorted list, push the next element into the priority queue
         if (temp->cols + 1 < arr[temp->row].size())
         {
@@ -95,13 +93,13 @@ int Smallest_range_in_KsortredList(vector<vector<int>> &arr, int k)
             break;
         }
     }
-    
+
     // Return the smallest range
-    return range;
+    return (end - start) + 1;
 }
 int main()
 {
-    vector<vector<int>> arr = {{10, 20, 30, 40}, {15, 25, 35, 45}, {28, 29, 37, 48}, {32, 33, 39, 50}};
-    int k = 4;
+    int k = 3;
+    vector<vector<int>> arr = {{1, 10, 11}, {2, 3, 20}, {5, 6, 12}};  
     cout << Smallest_range_in_KsortredList(arr, k);
 }
