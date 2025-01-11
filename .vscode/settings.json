@@ -6,6 +6,7 @@
         "vector": "cpp",
         "future": "cpp",
         "system_error": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "unordered_set": "cpp"
     }
 }

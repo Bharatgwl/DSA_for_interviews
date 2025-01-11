@@ -111,7 +111,11 @@ int main()
     insertattail(tail, 6);
     insertattail(tail, 1);
     insertattail(tail, 0);
-    insertattail(tail, 20);
+    insertattail(tail, -20);
+    insertattail(tail, 8);
+    insertattail(tail, 1);
+    insertattail(tail, 66);
+    insertattail(tail, -99);
     print(head);
     Node*result = mergesort(head);
     print(result);
