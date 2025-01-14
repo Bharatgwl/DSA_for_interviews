@@ -6,8 +6,7 @@ using namespace std;
 class graph
 {
 public:
-    unordered_map<int, set
-<int>> adj;
+    unordered_map<int, set<int>> adj;
     void addEdge(int x, int y, int directed)
     {
         adj[x].insert(y);
@@ -16,8 +15,7 @@ public:
             adj[y].insert(x);
         }
     }
-    void printAdjset
-()
+    void printAdjset()
     {
         for (auto i : adj)
         {
@@ -31,23 +29,21 @@ public:
         cout << endl;
     }
 };
-void topological_sort(int node, unordered_map<int,
-set<int>> adj, unordered_map<int, bool> &visited, stack<int> &s)
+void dfs(int node, unordered_map<int, set<int>> adj, unordered_map<int, bool> &visited, stack<int> &s)
 {
     visited[node] = true;
     for (auto neighbour : adj[node])
     {
         if (!visited[neighbour])
         {
-            topological_sort(neighbour, adj, visited, s);
+            dfs(neighbour, adj, visited, s);
         }
     }
     s.push(node);
     return;
 }
 
-void topological_sort(int n, unordered_map<int, set
-<int>> adj)
+void topological_sort(int n, unordered_map<int, set<int>> adj)
 {
     unordered_map<int, bool> visited;
     stack<int> s;
@@ -55,7 +51,7 @@ void topological_sort(int n, unordered_map<int, set
     {
         if (!visited[i])
         {
-            topological_sort(i, adj, visited, s);
+            dfs(i, adj, visited, s);
         }
     }
     while (!s.empty())
