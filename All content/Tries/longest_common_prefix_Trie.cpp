@@ -58,23 +58,29 @@ public:
     }
     void longest_common_prefix(vector<string> &arr, string word, string &ans)
     {
+        cout << "Inserting the words in Trie" << endl;
         for (int i = 0; i < arr.size(); i++)
         {
             this->insertWord(arr[i]);
         }
+        cout << "Finished inserting all the words" << endl;
         for (int i = 0; i < word.length(); i++)
         {
+            cout << "Checking the character " << word[i] << endl;
             if (root->countchild == 1)
             {
+                cout << "Character is common so adding it to the answer" << endl;
                 ans.push_back(word[i]);
                 root = root->children[word[i] - 'a'];
             }
             else
             {
+                cout << "Character is not common" << endl;
                 break;
             }
             if (root->isTerminal)
             {
+                cout << "Word is finished" << endl;
                 break;
             }
         }
