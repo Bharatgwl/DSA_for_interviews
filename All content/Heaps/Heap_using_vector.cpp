@@ -5,7 +5,7 @@ using namespace std;
 class Heap
 {
 private:
-    std::vector<int> arr;
+    vector<int> arr;
 
 public:
     Heap(int size)
