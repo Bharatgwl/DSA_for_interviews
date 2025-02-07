@@ -1,7 +1,1 @@
-
-    A B
-    B C
-    C D
-    D E
-    E F
-    F A
+1 2
