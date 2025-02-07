@@ -33,4 +33,5 @@ Here are some useful resources to help with DSA concepts and interview preparati
 1. **Clone the Repository**:
    To get started, clone the repository to your local machine using the following command:
    ```bash
-   git clone https://github.com/Bharatgwl/dsa-interview-preparation.git
+   git clone https://github.com/Bharatgwl/DSA_for_interviews.git
+   ```
