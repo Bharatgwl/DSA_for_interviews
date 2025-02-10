@@ -43,7 +43,7 @@ vector<pair<pair<int, int>, int>> prims(int n, unordered_map<int, vector<pair<in
 
     while (!minHeap.empty())
     {
-        int u = minHeap.top().second;
+        int u = minHeap.top().second; // get the vertex with the minimum key value
         minHeap.pop();
 
         inMST[u] = true;
