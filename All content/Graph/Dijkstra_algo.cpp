@@ -10,9 +10,9 @@ class graph
 {
 public:
     unordered_map<int, set<pair<int, int>>> adj;
-    void addEdge(int x, int y, int distance)
+    void addEdge(int x, int y, int weight)
     {
-        adj[x].insert(make_pair(y, distance));
+        adj[x].insert(make_pair(y, weight));
     }
     void printAdjList()
     {
@@ -85,10 +85,10 @@ int main()
     g1.addEdge(3, 2, 6);
 
     g1.printAdjList();
-    vector<int> ans = dijkstra(4, g1.adj, 0);
-    for (auto i : ans)
-    {
-        cout << i << " ";
-    }
+    // vector<int> ans = dijkstra(4, g1.adj, 0);
+    // for (auto i : ans)
+    // {
+    //     cout << i << " ";
+    // }
     return 0;
 }
