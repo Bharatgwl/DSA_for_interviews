@@ -6,32 +6,31 @@ using namespace std;
 vector<int> next_smaller(vector<int> arr)
 {
     int n = arr.size();
-    vector<int> ans;
+    vector<int> ans(n);
     stack<int> st;
     st.push(-1);
     for (int i = n - 1; i >= 0; i--)
     {
-        if (arr[i] > st.top())
+        if (arr[i] < st.top())
         {
-            ans.push_back(st.top());
+            ans[i] = st.top();
             st.push(arr[i]);
         }
         else
         {
-            while (st.top() > arr[i])
+            while (st.top() < arr[i] && st.top() != -1)
             {
                 st.pop();
             }
-            ans.push_back(st.top());
+            ans[i] = st.top();
             st.push(arr[i]);
         }
     }
-    reverse(ans.begin(), ans.end());
     return ans;
 }
 int main()
 {
-    vector<int> arr = {4, 3, 5, 1};
+    vector<int> arr = {4, 12, 5, 1, 2, 4, 6};
     vector<int> ans = next_smaller(arr);
     for (auto i : ans)
     {
