@@ -13,12 +13,14 @@ int longestSubarrayWithSumK(const vector<int>& arr, int k) {
     for (int i = 0; i < arr.size(); ++i) {
         currentSum += arr[i];
 
-        // If the sum equals `k`, the subarray starts from index 0
+        // If the sum equals k the subarray starts from index 0
         if (currentSum == k) {
             maxLength = i + 1;
         }
 
         // If the (currentSum - k) exists in the map, update the maxLength
+        // it means there is a number present in the map which exclusion can make
+        // the sum
         if (prefixSumIndex.find(currentSum - k) != prefixSumIndex.end()) {
             maxLength = max(maxLength, i - prefixSumIndex[currentSum - k]);
         }
