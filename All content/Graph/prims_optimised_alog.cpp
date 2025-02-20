@@ -73,18 +73,23 @@ vector<pair<pair<int, int>, int>> prims(int n, unordered_map<int, vector<pair<in
 int main()
 {
     Graph g;
-    g.addEdge(0, 1, 2);
-    g.addEdge(0, 3, 6);
-    g.addEdge(1, 2, 3);
-    g.addEdge(1, 3, 8);
-    g.addEdge(1, 4, 5);
-    g.addEdge(2, 4, 7);
-
+    // g.addEdge(0, 1, 2);
+    // g.addEdge(0, 3, 6);
+    // g.addEdge(1, 2, 3);
+    // g.addEdge(1, 3, 8);
+    // g.addEdge(1, 4, 5);
+    // g.addEdge(2, 4, 7);
+    int u,v,weight;
+    for (int i =0; i<6; i++){
+        cin >> u >> v >> weight;
+        g.addEdge(u,v,weight);
+    }
+    cout<<"adjacent list"<<endl;
     g.printAdjList();
 
     int minimum_cost = 0;
     auto result = prims(5, g.adj);
-
+    cout<<"result path"<<endl;
     for (auto &edge : result)
     {
         cout << edge.first.first << " " << edge.first.second << " " << edge.second << endl;
@@ -94,3 +99,10 @@ int main()
     cout << "Minimum cost of spanning tree is " << minimum_cost << endl;
     return 0;
 }
+// Input:
+// 0 1 2
+// 0 3 6
+// 1 2 3
+// 1 3 8
+// 1 4 5
+// 2 4 7
