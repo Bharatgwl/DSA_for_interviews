@@ -32,6 +32,6 @@ int main()
 
     vector<int> limits = {2, 2, 3};
     int k = 3;
-    cout << maxSum(grid, limits, k) << endl;
+    cout << maxSum(grid, limits,  k) << endl;
     return 0;
 }

@@ -35,7 +35,7 @@ TreeNode *constructFromPrePost(vector<int> &preorder,
                                vector<int> &postorder)
 {
     const int n = preorder.size();
-    preorederindex_array.assign(n + 1, -1);
+    preorederindex_array.assign(n + 1,  -1);
     postorderindex_array.assign(n + 1, -1);
 
     for (int i = 0; i < n; i++)
