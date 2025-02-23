@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DSA Interview Preparation
 
 This repository contains a collection of Data Structures and Algorithms (DSA) problems specifically designed to help you prepare for technical interviews. The problems are categorized into various topics, and they include solutions and explanations to help you understand the concepts and improve problem-solving skills.
@@ -36,7 +35,6 @@ Here are some useful resources to help with DSA concepts and interview preparati
    ```bash
    git clone https://github.com/Bharatgwl/DSA_for_interviews.git
    ```
-=======
 <h1 align="center">Hi 👋, I'm Bharat</h1>
 <h3 align="center">Data science and ML enthusiast</h3>
 
@@ -68,4 +66,3 @@ Here are some useful resources to help with DSA concepts and interview preparati
 <p><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=bharatgwl&show_icons=true&locale=en&layout=compact" alt="bharatgwl" /></p>
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=bharatgwl&" alt="bharatgwl" /></p>
->>>>>>> 2bc8bbc96f788eb7afdce61ddea43aef3fccf6b3
