@@ -67,11 +67,8 @@ int main()
         preorederindex_array[preorder[i]] = i;
         postorderindex_array[postorder[i]] = i;
     }
-    for (int i = 0; i < n; i++)
-    {
-        cout << preorederindex_array[i] << " ";
-        }
-    // TreeNode *root = constructFromPrePost(preorder, postorder);
-    // inorder(root);
+
+    TreeNode *root = constructFromPrePost(preorder, postorder);
+    inorder(root);
     return 0;
 }
