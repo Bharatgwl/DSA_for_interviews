@@ -13,6 +13,7 @@ public:
     void addEdge(int x, int y, int weight)
     {
         adj[x].insert(make_pair(y, weight));
+        adj[y].insert(make_pair(x, weight));
     }
     void printAdjList()
     {
@@ -36,8 +37,8 @@ vector<int> dijkstra(int n, unordered_map<int, set<pair<int, int>>> adj, int src
 
     // Use a set to store and fetch nodes in order of their current known distance
     set<pair<int, int>> s;
-    s.insert({0, src});
-
+    s.insert({0, src}); //
+ 
     // Process nodes until there are no nodes left to process in the set
     while (!s.empty())
     {
@@ -73,22 +74,25 @@ vector<int> dijkstra(int n, unordered_map<int, set<pair<int, int>>> adj, int src
 int main()
 {
     graph g1; 
-    g1.addEdge(0, 1, 5);
-    g1.addEdge(0, 2, 8);
-    g1.addEdge(1, 0, 5);
-    g1.addEdge(1, 2, 9);
-    g1.addEdge(1, 3, 2);
-    g1.addEdge(2, 0, 8);
-    g1.addEdge(2, 1, 9);
-    g1.addEdge(2, 3, 6);
-    g1.addEdge(3, 1, 2);
-    g1.addEdge(3, 2, 6);
+    // g1.addEdge(0, 1, 5);
+    // g1.addEdge(0, 2, 8);
+    // g1.addEdge(1, 0, 5);
+    // g1.addEdge(1, 2, 9);
+    // g1.addEdge(1, 3, 2);
+    // g1.addEdge(2, 0, 8);
+    // g1.addEdge(2, 1, 9);
+    // g1.addEdge(2, 3, 6);
+    // g1.addEdge(3, 1, 2);
+    // g1.addEdge(3, 2, 6);
 
+    g1.addEdge(0, 1, 0);
+    g1.addEdge(0, 2, 0);
+    g1.addEdge(0, 2, 0);
     g1.printAdjList();
-    // vector<int> ans = dijkstra(4, g1.adj, 0);
-    // for (auto i : ans)
-    // {
-    //     cout << i << " ";
-    // }
+    vector<int> ans = dijkstra(4, g1.adj, 0);
+    for (auto i : ans)
+    {
+        cout << i << " ";
+    }
     return 0;
 }

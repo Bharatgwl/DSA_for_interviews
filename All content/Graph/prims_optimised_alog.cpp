@@ -80,7 +80,8 @@ int main()
     // g.addEdge(1, 4, 5);
     // g.addEdge(2, 4, 7);
     int u,v,weight;
-    for (int i =0; i<6; i++){
+    int edges=3;
+    for (int i =0; i<edges; i++){
         cin >> u >> v >> weight;
         g.addEdge(u,v,weight);
     }
