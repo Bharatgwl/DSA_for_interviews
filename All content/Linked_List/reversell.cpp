@@ -39,7 +39,7 @@ void print(Node *&head)
     }
     cout << endl;
 }
-void reverse(Node *&head)
+Node* reverse(Node *head)
 {
     Node *prev = NULL;
     Node *curr = head;
@@ -52,6 +52,7 @@ void reverse(Node *&head)
         prev = curr;
         curr = forward;
     }
+    return prev;
 }
 int main()
 {
@@ -65,7 +66,7 @@ int main()
     insertattail(tail, 4);
 
     print(head);
-    reverse(head);
+    head = reverse(head);
     print(head);
 
     return 0;

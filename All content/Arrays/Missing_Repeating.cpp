@@ -2,12 +2,15 @@
 #include <vector>
 #include <unordered_map>
 using namespace std;
-vector<int> findTwoElement(vector<int> &arr)
+vector<int> findTwoElement(vector<vector<int>> &arr)
 {
     unordered_map<int, int> mp;
     for (auto i : arr)
     {
-        mp[i]++;
+        for (auto j : i)
+        {
+            mp[j]++;
+        }
     }
     int missing = 0;
     int repeating = 0;
@@ -26,13 +29,24 @@ vector<int> findTwoElement(vector<int> &arr)
 }
 int main()
 {
-    vector<int> arr = {2,2};
+    vector<vector<int>> arr = {{1, 3}, {2, 2}};
     // vector<int> arr = {4, 3, 6, 2, 1, 1};
     // vector<int> arr = {4, 3, 2, 1, 5, 7, 7};
-    for (auto i : findTwoElement(arr))
+    unordered_map<int, int> mp;
+    for (auto i : arr)
     {
-        cout << i << " ";
+        for (auto j : i)
+        {
+            mp[j]++;
+        }
     }
-
-    return 0;
+    for (auto i : mp)
+    {
+        cout << i.first << ' ' << i.second;
+    }
+    // for (auto i : findTwoElement(arr))
+    // {
+    //     cout << i << " ";
+    // }
+    // return 0;
 }
