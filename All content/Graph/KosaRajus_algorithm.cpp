@@ -53,15 +53,17 @@ void Transpose_Graph(unordered_map<int, set<int>> &adj, unordered_map<int, set<i
     }
 }
 
-void ReverseDFS(int node, unordered_map<int, bool> &vis, unordered_map<int, set<int>> Transpose_Graph)
+void Dfs_of_transpose(int node, unordered_map<int, bool> &vis, unordered_map<int, set<int>> Transpose_Graph)
 {
+    cout << "Visiting node: " << node << endl;
     vis[node] = true;
 
     for (auto nbr : Transpose_Graph[node])
     {
+        cout << "Visiting neighbour: " << nbr << endl;
         if (!vis[nbr])
         {
-            ReverseDFS(nbr, vis, Transpose_Graph);
+            Dfs_of_transpose(nbr, vis, Transpose_Graph);
         }
     }
 }
@@ -106,7 +108,7 @@ int main()
         if (!vis[top])
         {
             count++;
-            ReverseDFS(top, vis, transpose_graph);
+            Dfs_of_transpose(top, vis, transpose_graph);
         }
     }
 
