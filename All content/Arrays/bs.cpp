@@ -26,10 +26,16 @@ int binary_search(int arr[], int size, int key)
 }
 int main()
 {
-    int array[6] = {1, 2, 3, 4, 5, 6};
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
     int key;
     cin >> key;
-    int index = binary_search(array, 6, key);
+    int index = binary_search(arr, n, key);
     cout << "index of key is" << index << endl;
 
     return 0;

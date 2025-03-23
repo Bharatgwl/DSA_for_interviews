@@ -35,7 +35,7 @@ bool ispossible(vector<int> arr, int size, int m, int mid)
         }
     }
     // return stdcount < m ? false : true;
-    cout<<stdcount<<endl;
+    cout << stdcount << endl;
     if (stdcount <= m)
     {
         return false;
@@ -89,13 +89,13 @@ int allocatebooks(vector<int> arr, int size, int m)
  */
 int main()
 {
-    // vector<int> arr = {12, 34, 67, 90};
+    vector<int> nums = {12, 34, 67, 90};
 
-    // vector<int> arr = {2, 8, 8, 4, 5};
-    vector<int> arr = {25, 46 ,28 ,49 ,24};
-    int n = arr.size();
+    vector<int> nums = {2, 8, 8, 4, 5};
+    vector<int> nums = {25, 46 ,28 ,49 ,24};
+    int n = nums.size();
     int m = 4;
-    int answers = allocatebooks(arr, n, m);
+    int answers = allocatebooks(nums, n, m);
     cout << answers << endl;
     return 0;
 }

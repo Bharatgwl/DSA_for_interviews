@@ -41,7 +41,7 @@ void Topological_sort(int node, stack<int> &st, unordered_map<int, set<int>> &ad
     st.push(node);
 }
 
-void Transpose_Graph(unordered_map<int, set<int>> &adj, unordered_map<int, set<int>> &transpose_graph, int n)
+void Transpose_Graph(unordered_map<int, set<int>> &adj, unordered_map<int, set<int>> &transpose_graph)
 {
     for (auto &p : adj)
     {
@@ -95,7 +95,7 @@ int main()
 
     unordered_map<int, set<int>> transpose_graph;
 
-    Transpose_Graph(g1.adj, transpose_graph, n);
+    Transpose_Graph(g1.adj, transpose_graph);
 
     vis.clear();
     int count = 0;
