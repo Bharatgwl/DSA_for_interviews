@@ -7,6 +7,8 @@ void heapify(vector<int> &arr, int n, int i)
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
+    cout << "Heapify: " << i << " left: " << left << " right: " << right << endl;
+    cout << "Heapify: " << arr[i] << " left: " << arr[left] << " right: " << arr[right] << endl;
     if (left < n && arr[left] > arr[largest])
     {
         largest = left;
@@ -17,8 +19,9 @@ void heapify(vector<int> &arr, int n, int i)
     }
     if (largest != i)
     {
+        cout << "Heapify: Swap " << arr[i] << " with " << arr[largest] << endl;
         swap(arr[i], arr[largest]);
-        heapify(arr, n, largest);
+        heapify(arr, n, largest); // wese toh hum n/2-1 elements ko heapify krenge lekin baki elements recursion se heapify hojayege kyuki wo childs hay 
     }
 }
 void Heapsort(vector<int> &arr, int n)

@@ -29,7 +29,7 @@ void permute(string s, string temp, vector<string> &ans)
 
 int main()
 {
-    string s = "aab";
+    string s = "123";
     vector<string> ans;
     string temp = "";
     

@@ -1,17 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
-// int ZERO_ONE_knapsack(vector<int> &wt, vector<int> &val, int W, int n)
-// {
-//     if (W == 0 || n == 0)
-//         return 0;
+int ZERO_ONE_knapsack(vector<int> &wt, vector<int> &val, int W, int n)
+{
+    if (W == 0 || n == 0)
+        return 0;
 
-//     if (wt[n - 1] > W)
-//         return ZERO_ONE_knapsack(wt, val, W, n - 1);
+    if (wt[n - 1] > W)
+        return ZERO_ONE_knapsack(wt, val, W, n - 1);
 
-//     return max(
-//         val[n - 1] + ZERO_ONE_knapsack(wt, val, W - wt[n - 1], n - 1),
-//         ZERO_ONE_knapsack(wt, val, W, n - 1));
-// }
+    return max(
+        val[n - 1] + ZERO_ONE_knapsack(wt, val, W - wt[n - 1], n - 1),
+        ZERO_ONE_knapsack(wt, val, W, n - 1));
+}
 int ZERO_ONE_knapsack_memo(vector<int> &wt, vector<int> &val, int W, int n, vector<vector<int>> &dp)
 {
     if (W == 0 || n == 0)

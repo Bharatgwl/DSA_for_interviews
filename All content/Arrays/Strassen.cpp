@@ -1,163 +1,127 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ROW_1 4
-#define COL_1 4
-
-#define ROW_2 4
-#define COL_2 4
-
-void print(string display, vector<vector<int>> matrix,
-		   int start_row, int start_column, int end_row,
-		   int end_column)
+// Function to print a matrix
+void printMatrix(const vector<vector<int>> &matrix, const string &label)
 {
-	cout << endl
-		 << display << " =>" << endl;
-	for (int i = start_row; i <= end_row; i++)
+	cout << label << " =>" << endl;
+	for (const auto &row : matrix)
 	{
-		for (int j = start_column; j <= end_column; j++)
-		{
-			cout << setw(10);
-			cout << matrix[i][j];
-		}
+		for (const auto &val : row)
+			cout << setw(10) << val;
 		cout << endl;
 	}
 	cout << endl;
-	return;
 }
 
-void add_matrix(vector<vector<int>> matrix_A,
-				vector<vector<int>> matrix_B,
-				vector<vector<int>> &matrix_C,
-				int split_index)
+// Function to add two matrices and return the result
+vector<vector<int>> addMatrix(const vector<vector<int>> &A, const vector<vector<int>> &B)
 {
-	for (auto i = 0; i < split_index; i++)
-		for (auto j = 0; j < split_index; j++)
-			matrix_C[i][j] = matrix_A[i][j] + matrix_B[i][j];
+	int n = A.size();
+	vector<vector<int>> result(n, vector<int>(n, 0));
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			result[i][j] = A[i][j] + B[i][j];
+	return result;
 }
 
-vector<vector<int>>
-multiply_matrix(vector<vector<int>> matrix_A,
-				vector<vector<int>> matrix_B)
+// Function to split a matrix into quadrants
+void splitMatrix(const vector<vector<int>> &matrix,
+				 vector<vector<int>> &topLeft,
+				 vector<vector<int>> &topRight,
+				 vector<vector<int>> &bottomLeft,
+				 vector<vector<int>> &bottomRight)
 {
-	int col_1 = matrix_A[0].size();
-	int row_1 = matrix_A.size();
-	int col_2 = matrix_B[0].size();
-	int row_2 = matrix_B.size();
-
-	if (col_1 != row_2)
+	int n = matrix.size();
+	int mid = n / 2;
+	for (int i = 0; i < mid; i++)
 	{
-		cout << "\nError: The number of columns in Matrix "
-				"A must be equal to the number of rows in "
-				"Matrix B\n";
-		return {};
+		vector<int> rowLeft, rowRight;
+		vector<int> rowLeftBottom, rowRightBottom;
+		for (int j = 0; j < mid; j++)
+		{
+			rowLeft.push_back(matrix[i][j]);
+			rowRight.push_back(matrix[i][j + mid]);
+			rowLeftBottom.push_back(matrix[i + mid][j]);
+			rowRightBottom.push_back(matrix[i + mid][j + mid]);
+		}
+		topLeft.push_back(rowLeft);
+		topRight.push_back(rowRight);
+		bottomLeft.push_back(rowLeftBottom);
+		bottomRight.push_back(rowRightBottom);
+	}
+}
+
+// Function to combine four quadrants into a single matrix
+vector<vector<int>> combineMatrix(const vector<vector<int>> &topLeft,
+								  const vector<vector<int>> &topRight,
+								  const vector<vector<int>> &bottomLeft,
+								  const vector<vector<int>> &bottomRight)
+{
+	int mid = topLeft.size();
+	int n = mid * 2;
+	vector<vector<int>> result(n, vector<int>(n, 0));
+	for (int i = 0; i < mid; i++)
+	{
+		for (int j = 0; j < mid; j++)
+		{
+			result[i][j] = topLeft[i][j];
+			result[i][j + mid] = topRight[i][j];
+			result[i + mid][j] = bottomLeft[i][j];
+			result[i + mid][j + mid] = bottomRight[i][j];
+		}
+	}
+	return result;
+}
+
+// Recursive function to multiply two matrices using divide and conquer
+vector<vector<int>> recursiveMultiply(const vector<vector<int>> &A, const vector<vector<int>> &B)
+{
+	int n = A.size();
+
+	// Base case: 1x1 matrix multiplication
+	if (n == 1)
+	{
+		return {{A[0][0] * B[0][0]}};
 	}
 
-	vector<int> result_matrix_row(col_2, 0);
-	vector<vector<int>> result_matrix(row_1,
-									  result_matrix_row);
+	// Split matrices into quadrants
+	vector<vector<int>> a00, a01, a10, a11;
+	vector<vector<int>> b00, b01, b10, b11;
 
-	if (col_1 == 1)
-		result_matrix[0][0] = matrix_A[0][0] * matrix_B[0][0];
-	else
-	{
-		int split_index = col_1 / 2;
+	splitMatrix(A, a00, a01, a10, a11);
+	splitMatrix(B, b00, b01, b10, b11);
 
-		vector<int> row_vector(split_index, 0);
-		vector<vector<int>> result_matrix_00(split_index,
-											 row_vector);
-		vector<vector<int>> result_matrix_01(split_index,
-											 row_vector);
-		vector<vector<int>> result_matrix_10(split_index,
-											 row_vector);
-		vector<vector<int>> result_matrix_11(split_index,
-											 row_vector);
+	// Recursively calculate submatrices of the result
+	vector<vector<int>> c00 = addMatrix(recursiveMultiply(a00, b00), recursiveMultiply(a01, b10));
+	vector<vector<int>> c01 = addMatrix(recursiveMultiply(a00, b01), recursiveMultiply(a01, b11));
+	vector<vector<int>> c10 = addMatrix(recursiveMultiply(a10, b00), recursiveMultiply(a11, b10));
+	vector<vector<int>> c11 = addMatrix(recursiveMultiply(a10, b01), recursiveMultiply(a11, b11));
 
-		vector<vector<int>> a00(split_index, row_vector);
-		vector<vector<int>> a01(split_index, row_vector);
-		vector<vector<int>> a10(split_index, row_vector);
-		vector<vector<int>> a11(split_index, row_vector);
-		vector<vector<int>> b00(split_index, row_vector);
-		vector<vector<int>> b01(split_index, row_vector);
-		vector<vector<int>> b10(split_index, row_vector);
-		vector<vector<int>> b11(split_index, row_vector);
-
-		for (auto i = 0; i < split_index; i++)
-			for (auto j = 0; j < split_index; j++)
-			{
-				a00[i][j] = matrix_A[i][j];
-				a01[i][j] = matrix_A[i][j + split_index];
-				a10[i][j] = matrix_A[split_index + i][j];
-				a11[i][j] = matrix_A[i + split_index]
-									[j + split_index];
-				b00[i][j] = matrix_B[i][j];
-				b01[i][j] = matrix_B[i][j + split_index];
-				b10[i][j] = matrix_B[split_index + i][j];
-				b11[i][j] = matrix_B[i + split_index]
-									[j + split_index];
-			}
-
-		add_matrix(multiply_matrix(a00, b00),
-				   multiply_matrix(a01, b10),
-				   result_matrix_00, split_index);
-		add_matrix(multiply_matrix(a00, b01),
-				   multiply_matrix(a01, b11),
-				   result_matrix_01, split_index);
-		add_matrix(multiply_matrix(a10, b00),
-				   multiply_matrix(a11, b10),
-				   result_matrix_10, split_index);
-		add_matrix(multiply_matrix(a10, b01),
-				   multiply_matrix(a11, b11),
-				   result_matrix_11, split_index);
-
-		for (auto i = 0; i < split_index; i++)
-			for (auto j = 0; j < split_index; j++)
-			{
-				result_matrix[i][j] = result_matrix_00[i][j];
-				result_matrix[i][j + split_index] = result_matrix_01[i][j];
-				result_matrix[split_index + i][j] = result_matrix_10[i][j];
-				result_matrix[i + split_index]
-							 [j + split_index] = result_matrix_11[i][j];
-			}
-
-		result_matrix_00.clear();
-		result_matrix_01.clear();
-		result_matrix_10.clear();
-		result_matrix_11.clear();
-		a00.clear();
-		a01.clear();
-		a10.clear();
-		a11.clear();
-		b00.clear();
-		b01.clear();
-		b10.clear();
-		b11.clear();
-	}
-	return result_matrix;
+	// Combine the results into a single matrix
+	return combineMatrix(c00, c01, c10, c11);
 }
 
 int main()
 {
-	vector<vector<int>> matrix_A = {{1, 1, 1, 1},
-									{2, 2, 2, 2},
-									{3, 3, 3, 3},
-									{2, 2, 2, 2}};
+	vector<vector<int>> matrixA = {
+		{1, 1, 1, 1},
+		{2, 2, 2, 2},
+		{3, 3, 3, 3},
+		{2, 2, 2, 2}};
 
-	print("Array A", matrix_A, 0, 0, ROW_1 - 1, COL_1 - 1);
+	vector<vector<int>> matrixB = {
+		{1, 1, 1, 1},
+		{2, 2, 2, 2},
+		{3, 3, 3, 3},
+		{2, 2, 2, 2}};
 
-	vector<vector<int>> matrix_B = {{1, 1, 1, 1},
-									{2, 2, 2, 2},
-									{3, 3, 3, 3},
-									{2, 2, 2, 2}};
+	printMatrix(matrixA, "Matrix A");
+	printMatrix(matrixB, "Matrix B");
 
-	print("Array B", matrix_B, 0, 0, ROW_2 - 1, COL_2 - 1);
+	vector<vector<int>> result = recursiveMultiply(matrixA, matrixB);
 
-	vector<vector<int>> result_matrix(
-		multiply_matrix(matrix_A, matrix_B));
+	printMatrix(result, "Result Matrix");
 
-	print("Result Array", result_matrix, 0, 0, ROW_1 - 1,
-		  COL_2 - 1);
+	return 0;
 }
-
-// Time Complexity: O(n^3)
-// Code Contributed By: lucasletum
