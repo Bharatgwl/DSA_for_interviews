@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.html": "html",
         "iostream": "cpp",
         "deque": "cpp",
         "string": "cpp",
@@ -8,6 +9,7 @@
         "system_error": "cpp",
         "regex": "cpp",
         "unordered_set": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "array": "cpp"
     }
 }

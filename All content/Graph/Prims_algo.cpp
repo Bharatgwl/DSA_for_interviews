@@ -51,7 +51,7 @@ vector<pair<pair<int, int>, int>> prims(int n, unordered_map<int, set<pair<int, 
         {
             int v = it.first;
             int weight = it.second;
-            if (mst[v] == false && weight < key[v])
+            if (mst[v] == false && weight < key[v]) 
             {
                 parent[v] = u;
                 key[v] = weight;

@@ -47,13 +47,49 @@ int table(vector<int> &wt, vector<int> &val, int W)
     }
     return dp[n][W];
 }
+int Zero_ONE_knapsack_space_optimized(vector<int> &wt, vector<int> &val, int W)
+{
+    int n = wt.size();
+    vector<int> prev(W + 1, 0);
+    for (int i = 1; i <= n; i++)
+    {
+        vector<int> curr(W + 1, 0);
+        for (int j = 0; j <= W; j++)
+        {
+            if (wt[i - 1] <= j)
+                curr[j] = max(val[i - 1] + prev[j - wt[i - 1]], prev[j]);
+            else
+                curr[j] = prev[j];
+        }
+        prev = curr;
+    }
+    return prev[W];
+}
+int Zero_ONE_knapsack_space_optimized_using_single_vector(vector<int> &wt, vector<int> &val, int W)
+{
+    int n = wt.size();
+    vector<int> curr(W + 1, 0);
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = W; j >= wt[i - 1]; j--) // we are iterating in reverse order to avoid overwriting the values of the current row
+        {
+            curr[j] = max(val[i - 1] + curr[j - wt[i - 1]], curr[j]);
+        }
+    }
+    return curr[W];
+}
+
 int main()
 {
     vector<int> wt = {1, 3, 4, 5};
     vector<int> val = {1, 4, 5, 7};
     int W = 7;
     vector<vector<int>> dp(wt.size() + 1, vector<int>(W + 1, -1));
-    cout << ZERO_ONE_knapsack_memo(wt, val, W, wt.size(), dp);
+    cout << "using memoisation : " << ZERO_ONE_knapsack_memo(wt, val, W, wt.size(), dp) << endl;
+    cout << "using space optimised single vector: " << Zero_ONE_knapsack_space_optimized_using_single_vector(wt, val, W) << endl;
+    cout << "using space optimised " << Zero_ONE_knapsack_space_optimized(wt, val, W) << endl;
+    cout << "using tablution : " << table(wt, val, W) << endl;
+    cout << "using recursion : " << ZERO_ONE_knapsack(wt, val, W, wt.size()) << endl;
 
     return 0;
 }
