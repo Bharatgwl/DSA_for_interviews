@@ -30,7 +30,7 @@ public:
         next[s - 1] = -1;
         freespot = 0;
     }
-    void topele(int m)
+    void TopElement(int m)
     {
         if (freespot == 0)
         {
@@ -76,7 +76,7 @@ int main()
     st.push(40, 3);
     st.push(50, 3);
 
-    st.topele(2);
+    st.TopElement(2);
     st.pop(1);
     st.pop(2);
     st.pop(2);
@@ -84,5 +84,5 @@ int main()
     st.pop(3);
     st.pop(3);
    
-    st.topele(2);
+    st.TopElement(2);
 }

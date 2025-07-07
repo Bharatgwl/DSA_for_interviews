@@ -18,7 +18,7 @@ vector<int> next_smaller(vector<int> arr)
         }
         else
         {
-            while (st.top() > arr[i])
+            while (arr[i] < st.top())
             {
                 st.pop();
             }
