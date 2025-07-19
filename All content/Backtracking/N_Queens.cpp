@@ -82,7 +82,7 @@ int main()
     cin >> n;
     vector<vector<int>> ans(n, vector<int>(n, 0));
     N_Queens(n, ans);
-    for (auto i : ans)
+    for(auto i : ans)
     {
         for (auto j : i)
         {

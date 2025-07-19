@@ -50,6 +50,29 @@ int minCostTicketsTAB(vector<int> &days, vector<int> &costs)
     }
     return dp[0];
 }
+int MincostTickets_optimised(vector<int> &days, vector<int> &costs)
+{
+    queue<pair<int, int>> weekly; 
+    queue<pair<int, int>> monthly;
+    int ans = 0;
+
+    for (int day : days)
+    {
+        while (!weekly.empty() && weekly.front().first + 7 <= day)
+            weekly.pop();
+
+        while (!monthly.empty() && monthly.front().first + 30 <= day)
+            monthly.pop();
+
+        weekly.push({day, ans + costs[1]});
+        monthly.push({day, ans + costs[2]});
+
+        ans = min({ans + costs[0], weekly.front().second, monthly.front().second});
+    }
+
+    return ans;
+}
+
 int main()
 {
     vector<int> days = {2, 5};
@@ -58,5 +81,6 @@ int main()
     vector<int> dp(days.size() + 1, -1);
     cout << minCostTicketsdp(days, costs, 0, dp) << endl;
     cout << minCostTicketsTAB(days, costs) << endl;
+    cout << MincostTickets_optimised(days, costs) << endl;
     return 0;
 }
