@@ -45,7 +45,7 @@ vector<int> monotonic_stack_decreasing(vector<int> arr)
 }
 int main()
 {
-    vector<int> arr = {1, 2, 3, 4, 5};
+    vector<int> arr = {1, 2, 3, 0, 5};
 
     vector<int> ans = monotonic_stack_increasing(arr);
     vector<int> res = monotonic_stack_decreasing(arr);

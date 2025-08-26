@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.dbclient-js": "javascript",
         "*.html": "html",
         "iostream": "cpp",
         "deque": "cpp",
@@ -10,6 +11,7 @@
         "regex": "cpp",
         "unordered_set": "cpp",
         "set": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "cmath": "cpp"
     }
 }

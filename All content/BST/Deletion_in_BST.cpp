@@ -72,7 +72,7 @@ void takeinput(node *&root)
         cin >> data;
     }
 }
-int min_value(node *root)
+int     min_value(node *root)
 {
     node *curr = root;
     while (curr->left)

@@ -34,7 +34,7 @@ public:
             root->isTerminal = true;
             return;
         }
-        int index = word[0] - 'a';
+        int index = word[0] - 'a'; // to get the index of that alphabet      
         Trienode *child;
         if (root->children[index] != NULL)
         {
