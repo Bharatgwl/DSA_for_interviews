@@ -35,22 +35,4 @@ Here are some useful resources to help with DSA concepts and interview preparati
    ```bash
    git clone https://github.com/Bharatgwl/DSA_for_interviews.git
    ```
-<!---LeetCode Topics Start-->
-# LeetCode Topics
-## Array
-|  |
-| ------- |
-| [3143-longest-unequal-adjacent-groups-subsequence-i](https://github.com/Bharatgwl/DSA_for_interviews/tree/master/3143-longest-unequal-adjacent-groups-subsequence-i) |
-## String
-|  |
-| ------- |
-| [3143-longest-unequal-adjacent-groups-subsequence-i](https://github.com/Bharatgwl/DSA_for_interviews/tree/master/3143-longest-unequal-adjacent-groups-subsequence-i) |
-## Dynamic Programming
-|  |
-| ------- |
-| [3143-longest-unequal-adjacent-groups-subsequence-i](https://github.com/Bharatgwl/DSA_for_interviews/tree/master/3143-longest-unequal-adjacent-groups-subsequence-i) |
-## Greedy
-|  |
-| ------- |
-| [3143-longest-unequal-adjacent-groups-subsequence-i](https://github.com/Bharatgwl/DSA_for_interviews/tree/master/3143-longest-unequal-adjacent-groups-subsequence-i) |
-<!---LeetCode Topics End-->
+
