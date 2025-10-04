@@ -64,12 +64,50 @@ int solveMEM(vector<int> &obstacles, int currlane, int currpos,
         return dp[currlane][currpos];
     }
 }
+int solveTAB(vector<int> &obstacles)
+{
+    int n = obstacles.size() - 1;
+    vector<vector<int>> dp(4, vector<int>(n + 1, 0));
 
+    for (int currpos = n; currpos >= 0; currpos--)
+    {
+        for (int currlane = 1; currlane <= 3; currlane++)
+        {
+            if (currpos == n)
+            {
+                dp[currlane][currpos] = 0;
+                continue;
+            }
+
+            if (obstacles[currpos + 1] != currlane)
+            {
+                dp[currlane][currpos] = dp[currlane][currpos + 1];
+            }
+            else
+            {
+                int ans = INT_MAX;
+
+                for (int i = 1; i <= 3; i++)
+                {
+                    if (obstacles[currpos] != i &&
+                        currlane !=
+                            i)
+                    {
+                        ans = min(ans, 1 + dp[i][currpos + 1]); // currpos+1 because we havent calculated for currpos yet
+                    }
+                }
+                dp[currlane][currpos] = ans;
+            }
+        }
+    }
+    return dp[2][0];
+}
 int minSideJumps(vector<int> &obstacles)
 {
     vector<vector<int>> dp(4, vector<int>(obstacles.size(), -1));
 
     cout << solve(obstacles, 2, 0) << endl;
+    cout << solveTAB(obstacles) << endl;    
     return solveMEM(obstacles, 2, 0, dp);
 }
 
