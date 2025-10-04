@@ -53,7 +53,7 @@ int reduceoptimised(vector<int> &satisfaction)
     do
     {
         prev = curr;
-        curr += sum;
+        curr += sum; // mimic multiply by adding previous numbers 
         curr += satisfaction[i];
         sum += satisfaction[i];
         i--;
