@@ -50,9 +50,9 @@ bool cmp(vector<int> &a, vector<int> &b)
 
 int find(vector<int> &parent, int node)
 {
-    if (parent[node] == node)
+    if (parent[node] == node) // iska matlab root node mil gya
         return node;
-    return parent[node] = find(parent, parent[node]);
+    return parent[node] = find(parent, parent[node]); // path compression node ko root se directly connect krdega
 }
 void unionOp(vector<int> &parent, int u, int v)
 {
@@ -71,24 +71,24 @@ int kruskal(vector<vector<int>> &edgeList, vector<int> &parent, vector<int> &ran
     int cost = 0;
     for (auto i : edgeList)
     {
-        int u = i[0]; // 
+        int u = i[0]; //
         int v = i[1];
-        int weight = i[2]; // weight of the edge 
-        int x = find(parent, u);
-        int y = find(parent, v);
-        if (x != y)
+        int weight = i[2]; // weight of the edge
+        int x = find(parent, u); // parent of u 
+        int y = find(parent, v);// parent of v
+        if (x != y) // check kar rhe h ki cycle to nhi bni matlb ki dono nodes ka parent same to nhi h
         {
-            if (rank[x] < rank[y])
+            if (rank[x] < rank[y]) // yaha rank ka use krke hum tree ko balanced rkhne ki koshish kr rhe h
             {
-                unionOp(parent, x, y);
+                unionOp(parent, x, y); // x ka parent y bna do
             }
             else if (rank[x] > rank[y])
             {
-                unionOp(parent, y, x);
+                unionOp(parent, y, x); // y ka parent x bna do
             }
             else
             {
-                unionOp(parent, y, x);
+                unionOp(parent, y, x); // y ka parent x bna do
                 rank[y]++;
             }
             cost += weight;
@@ -111,7 +111,20 @@ int main()
 
     // g.printAdjList();
     vector<vector<int>> edgeList = prepareEdgeList(g.adj);
+    printf("Edge List:\n");
+    for (auto &edge : edgeList)
+    {
+        printf("(%d, %d) with weight %d\n", edge[0], edge[1], edge[2]);
+    }
+    cout << "------------------" << endl;
+    cout<<"Print adjacency list after preparing edge list"<<endl;
+    g.printAdjList();
     sort(edgeList.begin(), edgeList.end(), cmp);
+    cout << "Sorted Edge List based on weights:\n";
+    for (auto &edge : edgeList)
+    {
+        printf("(%d, %d) with weight %d\n", edge[0], edge[1], edge[2]);
+    }
     vector<int> parent(edgeList.size());
     vector<int> rank(edgeList.size());
     SetDatastructres(parent, rank);

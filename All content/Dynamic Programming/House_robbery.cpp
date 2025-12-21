@@ -1,5 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
+int house_robbery(vector<int> &nums, int i)
+{
+
+    if (i < 0)
+        return 0;
+    if (i == 0)
+        return nums[0];
+    int pick = nums[i] + house_robbery(nums, i - 2);
+    int notpick = house_robbery(nums, i - 1);
+    return max(pick, notpick);
+}
 // int house_robbery(vector<int> &nums)
 // {
 //     int n = nums.size();
@@ -17,13 +28,13 @@ using namespace std;
 int house_robbery(vector<int> &nums)
 {
     int n = nums.size();
-    int prev2 =0;
-    int prev1 =nums[0];
-    for(int i=1;i<n;i++)
+    int prev2 = 0;
+    int prev1 = nums[0];
+    for (int i = 1; i < n; i++)
     {
-        int incl = nums[i]+prev2;
+        int incl = nums[i] + prev2;
         int excl = prev1;
-        int curr = max(incl,excl);
+        int curr = max(incl, excl);
         prev2 = prev1;
         prev1 = curr;
     }
@@ -32,6 +43,7 @@ int house_robbery(vector<int> &nums)
 int main()
 {
     vector<int> nums = {1, 3, 2, 7};
+    cout << house_robbery(nums, nums.size() - 1) << endl;
     vector<int> first, second;
     for (int i = 0; i < nums.size(); i++)
     {
