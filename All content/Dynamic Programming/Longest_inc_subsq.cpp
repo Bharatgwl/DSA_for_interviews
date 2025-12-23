@@ -1,27 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
-int longest_inc_subsq(vector<int> arr)
+
+int longest_inc_subsq(const vector<int> &arr)
 {
-    vector<int> dp(arr.size(), 1);
-    int omax = 0;
-    for (int i = 0; i < arr.size(); i++)
+    int n = arr.size();
+    if (n == 0)
+        return 0;
+
+    vector<int> dp(n, 1);
+    int omax = 1;
+
+    for (int i = 0; i < n; i++)
     {
-        int max = 0;
         for (int j = 0; j < i; j++)
         {
             if (arr[j] < arr[i])
             {
-                if (dp[j] > max)
-                {
-                    max = dp[j];
-                }
+                dp[i] = max(dp[i], dp[j] + 1);
             }
         }
-        dp[i] = max + 1;
-        if (dp[i] > omax)
-        {
-            omax = dp[i];
-        }
+        omax = max(omax, dp[i]);
     }
     return omax;
 }
